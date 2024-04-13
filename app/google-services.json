@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "805735835007",
+    "project_id": "blinkitclone-fca02",
+    "storage_bucket": "blinkitclone-fca02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805735835007:android:966f0b43cce516c164264a",
+        "android_client_info": {
+          "package_name": "com.example.adminblinkitclone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn1Y0lsDl01avxXVswlD0HB--wLpcDLHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
