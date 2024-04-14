@@ -97,7 +97,6 @@
                     app:boxCornerRadiusBottomStart="16.90dp"
                     app:boxCornerRadiusBottomEnd="16.90dp"
                     app:cursorColor="@color/yellow"
-                    app:endIconMode="clear_text"
                     app:hintTextColor="@color/yellow">
 
                 <AutoCompleteTextView
@@ -105,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Unit"
-                    android:inputType="number"/>
+                    android:inputType="none"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
             <LinearLayout
@@ -151,16 +150,15 @@
                     app:boxCornerRadiusBottomStart="16.90dp"
                     app:boxCornerRadiusBottomEnd="16.90dp"
                     app:cursorColor="@color/yellow"
-                    app:endIconMode="clear_text"
                     app:hintTextColor="@color/yellow">
 
-                <AutoCompleteTextView
-                    android:id="@+id/tvProductStock"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="no of stock"
-                    android:inputType="number"/>
+                    <AutoCompleteTextView
+                        android:id="@+id/tvProductStock"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="no of stock"
+                        android:inputType="none"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -175,7 +173,6 @@
                 app:boxCornerRadiusBottomStart="16.90dp"
                 app:boxCornerRadiusBottomEnd="16.90dp"
                 app:cursorColor="@color/yellow"
-                app:endIconMode="clear_text"
                 app:hintTextColor="@color/yellow">
 
                 <AutoCompleteTextView
@@ -185,7 +182,7 @@
                     android:drawableStart="@drawable/baseline_category_24"
                     android:drawablePadding="9dp"
                     android:hint="Product Category"
-                    android:inputType="text"/>
+                    android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/productType"
@@ -199,7 +196,7 @@
                 app:boxCornerRadiusBottomStart="16.90dp"
                 app:boxCornerRadiusBottomEnd="16.90dp"
                 app:cursorColor="@color/yellow"
-                app:endIconMode="clear_text"
+                app:startIconTint="@color/black"
                 app:hintTextColor="@color/yellow">
 
                 <AutoCompleteTextView
@@ -209,7 +206,7 @@
                     android:drawableStart="@drawable/baseline_category_24"
                     android:drawablePadding="9dp"
                     android:hint="Product Type"
-                    android:inputType="text"/>
+                    android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout

@@ -20,8 +20,9 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
-        return binding.root
         setstatusBarColor()
+        return binding.root
+
     }
     private fun setstatusBarColor() {
         activity?.window?.apply {
