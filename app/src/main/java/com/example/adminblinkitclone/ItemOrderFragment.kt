@@ -1,5 +1,6 @@
 package com.example.adminblinkitclone
 
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import com.example.adminblinkitclone.adapter.ImageAdapter
 import com.example.adminblinkitclone.databinding.FragmentItemOrderBinding
 import com.example.adminblinkitclone.utils.Constants
 import com.example.myapplication.model.Category
@@ -16,6 +19,14 @@ import com.example.myapplication.model.Category
 class ItemOrderFragment : Fragment() {
 
     private lateinit var binding: FragmentItemOrderBinding
+    val ImageUri:ArrayList<Uri> = arrayListOf()
+    val selecctedImage = registerForActivityResult(ActivityResultContracts.GetMultipleContents()){ListOfUri->
+        val FiveImages = ListOfUri.take(5)
+        ImageUri.clear()
+        ImageUri.addAll(FiveImages)
+
+        binding.rvProductImage.adapter = ImageAdapter(ImageUri)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,9 +35,14 @@ class ItemOrderFragment : Fragment() {
         binding = FragmentItemOrderBinding.inflate(layoutInflater)
         setAutoCompleteTextViews()
         setstatusBarColor()
+        onImageBtnClicked()
         return binding.root
+    }
 
-
+    private fun onImageBtnClicked() {
+        binding.ImageBtn.setOnClickListener {
+            selecctedImage.launch("image/*")
+        }
     }
 
     private fun setAutoCompleteTextViews() {
