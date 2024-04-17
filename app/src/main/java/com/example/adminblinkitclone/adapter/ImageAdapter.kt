@@ -26,9 +26,10 @@ class ImageAdapter(
             IvImageBtn.setImageURI(imageArray)
         }
         holder.binding.IvCloseBtn.setOnClickListener {
-            if(position < ImageArray.size){
+            if(position <= ImageArray.size+1){
                 ImageArray.removeAt(position)
                 notifyItemRemoved(position)
+                notifyDataSetChanged()
             }
 
         }

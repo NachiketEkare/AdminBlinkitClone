@@ -12,8 +12,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.example.adminblinkitclone.adapter.ImageAdapter
 import com.example.adminblinkitclone.databinding.FragmentItemOrderBinding
+import com.example.adminblinkitclone.model.Product
 import com.example.adminblinkitclone.utils.Constants
-import com.example.myapplication.model.Category
+import com.example.myapplication.utils.Utils
 
 
 class ItemOrderFragment : Fragment() {
@@ -36,7 +37,53 @@ class ItemOrderFragment : Fragment() {
         setAutoCompleteTextViews()
         setstatusBarColor()
         onImageBtnClicked()
+        onAddBtnClicked()
         return binding.root
+    }
+
+    private fun onAddBtnClicked() {
+        binding.addBtn.setOnClickListener {
+            Utils.showDialog(requireContext(),"saving data...")
+            val productTitle = binding.etProductTitle.text.toString()
+            val quantity = binding.etQuantity.text.toString()
+            val unit = binding.tvProductUnit.text.toString()
+            val price = binding.etPrice.text.toString()
+            val stock = binding.tvProductStock.text.toString()
+            val productCategory = binding.ProductCategory.text.toString()
+            val productType = binding.ProductType.text.toString()
+
+            if(productTitle.isEmpty()||quantity.isEmpty()||unit.isEmpty()||price.isEmpty()||stock.isEmpty()||productCategory.isEmpty()||productType.isEmpty()){
+                Utils.apply {
+                    hideDialog()
+                    showDialog(requireContext(),"Please fill all the fields")
+                }
+            }
+            else if (ImageUri.isEmpty()){
+                Utils.apply {
+                    hideDialog()
+                    showDialog(requireContext(),"Please upload some images")
+                }
+            }
+            else{
+                var product = Product(
+                    ProductTitle = productTitle,
+                    quantity = quantity.toInt(),
+                    unit = unit,
+                    Price = price.toInt(),
+                    noOfStock = stock,
+                    ProductCategory = productCategory,
+                    ProductType = productType.toInt(),
+                    ItemCount = 0,
+                    adminId = Utils.getCurrentUserId()
+                )
+                SaveImageinFirebase(product)
+            }
+        }
+    }
+
+    private fun SaveImageinFirebase(product: Product) {
+
+
     }
 
     private fun onImageBtnClicked() {

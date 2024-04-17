@@ -47,6 +47,7 @@
                 app:hintTextColor="@color/yellow">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProductTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="9dp"
@@ -78,6 +79,7 @@
                     app:hintTextColor="@color/yellow">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="9dp"
@@ -131,6 +133,7 @@
                     app:hintTextColor="@color/yellow">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="9dp"
@@ -246,6 +249,7 @@
                 tools:listitem="@layout/item_view_image_selection"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/addBtn"
                 android:layout_width="match_parent"
                 android:layout_height="58.5dp"
                 android:layout_gravity="center"
