@@ -34,17 +34,20 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(inflater)
         setstatusBarColor()
         Handler(Looper.getMainLooper()).postDelayed({
-            lifecycleScope.launch {
-                viewModel.isCurrentUser.collect{
-                    if (it){
-                        startActivity(Intent(requireActivity(),AdminActivity::class.java))
-                        requireActivity().finish()
-                    }
-                    else{
-                        findNavController().navigate(R.id.action_splashFragment_to_signInFragment)
-                    }
-                }
-            }
+            findNavController().navigate(R.id.action_splashFragment_to_signInFragment)
+//            lifecycleScope.launch {
+//
+////                viewModel.isCurrentUser.collect{
+////
+//////                    if (it){
+//////                        startActivity(Intent(requireActivity(),AdminActivity::class.java))
+//////                        requireActivity().finish()
+//////                    }
+//////                    else{
+//////                        findNavController().navigate(R.id.action_splashFragment_to_signInFragment)
+//////                    }
+////                }
+//            }
 
         },3000)
         // Inflate the layout for this fragment

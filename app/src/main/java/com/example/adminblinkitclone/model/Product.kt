@@ -12,8 +12,8 @@ data class Product(
     var Price:Int? = null,
     var noOfStock: String? = null,
     var ProductCategory:String ? = null,
-    var ProductType:Int ? = null,
+    var ProductType:String ? = null,
     var ItemCount:Int? = null,
     var adminId: String? = null,
-    var ProductImages:ArrayList<Int> ? = null
+    var ProductImages:ArrayList<String?>? = null
 )
