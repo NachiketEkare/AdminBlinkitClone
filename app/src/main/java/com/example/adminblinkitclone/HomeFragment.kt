@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.example.adminblinkitclone.adapter.CategoryAdapter
 import com.example.adminblinkitclone.databinding.FragmentHomeBinding
+import com.example.adminblinkitclone.utils.Constants
+import com.example.myapplication.model.Category
 
 
 class HomeFragment : Fragment() {
@@ -20,10 +24,21 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
+        setCategory()
         setstatusBarColor()
         return binding.root
 
     }
+
+    private fun setCategory() {
+        val categorylist = ArrayList<Category>()
+
+        for (i in 0 until Constants.ProductListImage.size){
+            categorylist.add(Category(Constants.allProductsCategory[i],Constants.ProductListImage[i]))
+        }
+        binding.rvCategories.adapter = CategoryAdapter(categorylist)
+    }
+
     private fun setstatusBarColor() {
         activity?.window?.apply {
             val statusBarColors = ContextCompat.getColor(requireContext(),R.color.yellow)
