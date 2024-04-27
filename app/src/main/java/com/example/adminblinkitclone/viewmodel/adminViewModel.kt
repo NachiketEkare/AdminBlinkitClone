@@ -1,10 +1,8 @@
 package com.example.adminblinkitclone.viewmodel
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.adminblinkitclone.model.Product
-import com.example.myapplication.utils.Utils
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.flow.MutableStateFlow

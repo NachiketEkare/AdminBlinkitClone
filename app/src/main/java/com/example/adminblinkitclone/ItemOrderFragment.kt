@@ -81,7 +81,8 @@ class ItemOrderFragment : Fragment() {
                     ProductCategory = productCategory,
                     ProductType = productType,
                     ItemCount = 0,
-                    adminId = Utils.getCurrentUserId()
+                    adminId = Utils.getCurrentUserId(),
+                    ProductId = Utils.getRandomID()
                 )
                 SaveImageinFirebase(product)
             }

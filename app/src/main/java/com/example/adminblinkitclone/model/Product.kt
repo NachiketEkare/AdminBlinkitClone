@@ -5,7 +5,7 @@ import java.util.UUID
 
 data class Product(
 
-    var ProductId:String = UUID.randomUUID().toString(),
+    var ProductId:String? = null,
     var ProductTitle:String? = null,
     var quantity:Int? = null,
     var unit:String? = null,

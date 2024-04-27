@@ -1,5 +1,7 @@
 package com.example.adminblinkitclone.utils
 
+import com.example.adminblinkitclone.R
+
 object Constants {
 
     val allProductsCategory = arrayOf(
@@ -55,6 +57,27 @@ object Constants {
         "Water",
         "Cookies",
         "Maida & Sooji"
+    )
+
+    val ProductListImage = arrayOf(
+        R.drawable.vegetable,
+        R.drawable.toned_milk,
+        R.drawable.munchies,
+        R.drawable.cold_and_juices,
+        R.drawable.instant,
+        R.drawable.tea,
+        R.drawable.bakery_biscuits,
+        R.drawable.sweet_tooth,
+        R.drawable.atta_rice,
+        R.drawable.masala,
+        R.drawable.sauce_spreads,
+        R.drawable.chicken_meat,
+        R.drawable.paan_corner,
+        R.drawable.organic_premium,
+        R.drawable.cleaning,
+        R.drawable.home_office,
+        R.drawable.personal_care,
+        R.drawable.pet_care
     )
     val stock = arrayListOf(
         1,2,3,4,5,6,7,8,9,10
