@@ -73,16 +73,16 @@ class ItemOrderFragment : Fragment() {
             }
             else{
                 var product = Product(
+                    adminId = Utils.getCurrentUserId(),
+                    ItemCount = 0,
+                    noOfStock = stock.toInt(),
+                    Price = price.toInt(),
+                    ProductCategory = productCategory,
+                    ProductId = Utils.getRandomID(),
                     ProductTitle = productTitle,
                     quantity = quantity.toInt(),
                     unit = unit,
-                    Price = price.toInt(),
-                    noOfStock = stock,
-                    ProductCategory = productCategory,
-                    ProductType = productType,
-                    ItemCount = 0,
-                    adminId = Utils.getCurrentUserId(),
-                    ProductId = Utils.getRandomID()
+                    ProductType = productType
                 )
                 SaveImageinFirebase(product)
             }

@@ -7,17 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adminblinkitclone.adapter.CategoryAdapter
+import com.example.adminblinkitclone.adapter.ProductAdapter
 import com.example.adminblinkitclone.databinding.FragmentHomeBinding
 import com.example.adminblinkitclone.utils.Constants
+import com.example.adminblinkitclone.viewmodel.adminViewModel
 import com.example.myapplication.model.Category
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-
+    private val viewModel:adminViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,9 +30,20 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
         setCategory()
+        getAllProducts()
         setstatusBarColor()
         return binding.root
 
+    }
+
+    private fun getAllProducts() {
+        lifecycleScope.launch {
+            viewModel.FetchAllProducts().collect{
+                val productAdapter = ProductAdapter()
+                binding.rvProducts.adapter = productAdapter
+                productAdapter.differ.submitList(it)
+            }
+        }
     }
 
     private fun setCategory() {

@@ -5,15 +5,15 @@ import java.util.UUID
 
 data class Product(
 
-    var ProductId:String? = null,
     var ProductTitle:String? = null,
-    var quantity:Int? = null,
+    var noOfStock: Int? = null,
+    var ProductImages:ArrayList<String?>? = null,
     var unit:String? = null,
+    var quantity:Int? = null,
+    var ProductId:String? = null,
     var Price:Int? = null,
-    var noOfStock: String? = null,
-    var ProductCategory:String ? = null,
+    var adminId: String? = null,
     var ProductType:String ? = null,
     var ItemCount:Int? = null,
-    var adminId: String? = null,
-    var ProductImages:ArrayList<String?>? = null
+    var ProductCategory:String ? = null,
 )

@@ -56,6 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"

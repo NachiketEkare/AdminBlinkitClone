@@ -5,6 +5,7 @@ import com.example.adminblinkitclone.R
 object Constants {
 
     val allProductsCategory = arrayOf(
+        "All",
         "Vegetables & fruits",
         "Dairy and BreakFast",
         "Munchies",
@@ -60,6 +61,7 @@ object Constants {
     )
 
     val ProductListImage = arrayOf(
+        R.drawable.tea_coffee,
         R.drawable.vegetable,
         R.drawable.toned_milk,
         R.drawable.munchies,
