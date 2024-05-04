@@ -6,8 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.adminblinkitclone.databinding.ItemviewCategoryBinding
 import com.example.myapplication.model.Category
+import kotlin.reflect.KFunction1
 
-class CategoryAdapter(val categoryList:ArrayList<Category>):RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
+class CategoryAdapter(
+    val categoryList:ArrayList<Category>
+    , val OnCategoryClicked: KFunction1<Category, Unit>
+):RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryHolder {
         return CategoryHolder(ItemviewCategoryBinding.inflate(LayoutInflater.from(parent.context),parent,false))
@@ -22,6 +26,9 @@ class CategoryAdapter(val categoryList:ArrayList<Category>):RecyclerView.Adapter
         holder.binding.apply {
             CategoryImageview.setImageResource(category.productImage)
             tvCategoryTitle.text = category.productName
+        }
+        holder.itemView.setOnClickListener {
+            OnCategoryClicked(category)
         }
 
     }

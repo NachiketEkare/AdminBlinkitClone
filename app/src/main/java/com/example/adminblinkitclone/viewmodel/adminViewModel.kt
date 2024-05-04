@@ -64,7 +64,7 @@ class adminViewModel:ViewModel() {
             }
     }
 
-    fun FetchAllProducts(): Flow<List<Product>> = callbackFlow {
+    fun FetchAllProducts(categories: String?): Flow<List<Product>> = callbackFlow {
         val db = FirebaseDatabase.getInstance().getReference("Admins").child("AllProducts/")
         val eventListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -73,8 +73,10 @@ class adminViewModel:ViewModel() {
                     try {
                         val product = snapshot.getValue(Product::class.java)
                         if (product != null) {
-                            products.add(product)
-                            break
+                            if (categories == "All" || product.ProductCategory == categories){
+                                products.add(product)
+                                break
+                            }
                         } else {
                             // Handle the case where the retrieved product is null
                             // For example, log an error or skip adding it to the list

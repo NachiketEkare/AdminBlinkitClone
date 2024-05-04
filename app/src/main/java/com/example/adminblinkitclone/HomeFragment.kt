@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
 import com.example.adminblinkitclone.adapter.CategoryAdapter
 import com.example.adminblinkitclone.adapter.ProductAdapter
 import com.example.adminblinkitclone.databinding.FragmentHomeBinding
@@ -30,18 +29,29 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
         setCategory()
-        getAllProducts()
+        getAllProducts("All")
         setstatusBarColor()
         return binding.root
 
     }
 
-    private fun getAllProducts() {
+    private fun getAllProducts(categories: String?) {
+        binding.shimmerContainer.visibility = View.VISIBLE
         lifecycleScope.launch {
-            viewModel.FetchAllProducts().collect{
+            viewModel.FetchAllProducts(categories).collect{
+
+                if (it.isEmpty()){
+                    binding.tvText.visibility = View.VISIBLE
+                    binding.rvProducts.visibility = View.GONE
+                }
+                else{
+                    binding.tvText.visibility = View.GONE
+                    binding.rvProducts.visibility = View.VISIBLE
+                }
                 val productAdapter = ProductAdapter()
                 binding.rvProducts.adapter = productAdapter
                 productAdapter.differ.submitList(it)
+                binding.shimmerContainer.visibility = View.GONE
             }
         }
     }
@@ -52,7 +62,11 @@ class HomeFragment : Fragment() {
         for (i in 0 until Constants.ProductListImage.size){
             categorylist.add(Category(Constants.allProductsCategory[i],Constants.ProductListImage[i]))
         }
-        binding.rvCategories.adapter = CategoryAdapter(categorylist)
+        binding.rvCategories.adapter = CategoryAdapter(categorylist,::OnCategoryClicked)
+    }
+
+    private fun OnCategoryClicked(category:Category) {
+        getAllProducts(category.productName)
     }
 
     private fun setstatusBarColor() {
