@@ -54,9 +54,9 @@ class adminViewModel:ViewModel() {
     fun saveProductDetails(product: Product){
         FirebaseDatabase.getInstance().getReference("Admins").child("AllProducts/").setValue(product)
             .addOnSuccessListener{
-                FirebaseDatabase.getInstance().getReference("Admins").child("ProductCategory/${product.ProductId}").setValue(product)
+                FirebaseDatabase.getInstance().getReference("Admins").child("ProductCategory/${product.ProductCategory}").setValue(product)
                     .addOnSuccessListener {
-                        FirebaseDatabase.getInstance().getReference("Admins").child("ProductType/${product.ProductId}").setValue(product)
+                        FirebaseDatabase.getInstance().getReference("Admins").child("ProductType/${product.ProductType}").setValue(product)
                             .addOnSuccessListener {
                                 _isProductSaved.value = true
                             }
@@ -101,6 +101,12 @@ class adminViewModel:ViewModel() {
         awaitClose {
             db.removeEventListener(eventListener)
         }
+    }
+
+    fun saveUpdatedDetails(product: Product){
+        FirebaseDatabase.getInstance().getReference("Admins").child("AllProducts/").setValue(product)
+        FirebaseDatabase.getInstance().getReference("Admins").child("ProductCategory/${product.ProductCategory}").setValue(product)
+        FirebaseDatabase.getInstance().getReference("Admins").child("ProductType/${product.ProductType}").setValue(product)
     }
 
 

@@ -3,16 +3,16 @@ package com.example.adminblinkitclone.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.AsyncListUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.adminblinkitclone.databinding.ItemviewProductBinding
 import com.example.adminblinkitclone.model.Product
+import com.example.myapplication.model.Category
+import kotlin.reflect.KFunction1
 
-class ProductAdapter:RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(val OnEditBtnClicked: KFunction1<Product, Unit>) :RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     class ProductViewHolder(val binding:ItemviewProductBinding):ViewHolder(binding.root)
 
     override fun onCreateViewHolder(
@@ -49,6 +49,9 @@ class ProductAdapter:RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
             ProductPrice.text = "₹" + product.Price.toString()
             val quantity = product.quantity.toString() + product.unit
             ProductQuantity.text = quantity
+        }
+        holder.itemView.setOnClickListener {
+            OnEditBtnClicked(product)
         }
     }
 
